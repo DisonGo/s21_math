@@ -1,6 +1,7 @@
 #ifndef S21_MATH_H_
 #define S21_MATH_H_
-
+// TODO Write documentation
+// TODO Add Unit_tests
 #include <limits.h>
 #include <stdio.h>
 
