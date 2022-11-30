@@ -52,11 +52,11 @@ $(PROJECT_NAME).a: obj
 
 set_debug_gcc:
 	$(eval gcc += -g)
-	@echo Debug build
+	@echo s21_math:Debug build
 
 set_report_gcc:
 	$(eval gcc += -fprofile-arcs -ftest-coverage -fPIC)
-	@echo Check build
+	@echo s21_math:Check build
 
 test: $(TEST_SRC) $(PROJECT_NAME).a
 	$(gcc) $^ -o $@ $(TEST_CHECK_F) $(ADD_LIB)

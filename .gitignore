@@ -1,5 +1,7 @@
 local
 create_funcs.sh
+test
+main
 .vscode
 # Prerequisites
 *.d
