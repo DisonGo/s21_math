@@ -1,10 +1,10 @@
 #include "s21_math.h"
 /**
  * @brief Computes factorial of x.
- * 
+ *
  * @param x Input value.
  * @return Factorial of x.
- * @retval long double 
+ * @retval long double
  */
 long double s21_fuctorial(long long int x) {
   if (x == 1 || x == 0) return 1;

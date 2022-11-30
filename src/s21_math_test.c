@@ -3,11 +3,11 @@
 // #include <stdio.h>
 
 // int main() { return 1; }
+#include "s21_math.h"
+
 #include <check.h>
 #include <math.h>
 #include <stdlib.h>
-
-#include "s21_math.h"
 
 START_TEST(s21_abs_test1) { ck_assert_int_eq(s21_abs(5), abs(5)); }
 END_TEST
@@ -1124,12 +1124,12 @@ int main() {
   case_test(floor_suite(), &no_failed);
   case_test(fabs_suite(), &no_failed);
   case_test(sqrt_suite(), &no_failed);
-//   case_test(atan_suite(), &no_failed);
-//   case_test(asin_suite(), &no_failed);
-//   case_test(acos_suite(), &no_failed);
-//   case_test(sin_suite(), &no_failed);
-//   case_test(cos_suite(), &no_failed);
-//   case_test(tan_suite(), &no_failed);
+  //   case_test(atan_suite(), &no_failed);
+  //   case_test(asin_suite(), &no_failed);
+  //   case_test(acos_suite(), &no_failed);
+  //   case_test(sin_suite(), &no_failed);
+  //   case_test(cos_suite(), &no_failed);
+  //   case_test(tan_suite(), &no_failed);
   case_test(exp_suite(), &no_failed);
   case_test(log_suite(), &no_failed);
   case_test(fmod_suite(), &no_failed);

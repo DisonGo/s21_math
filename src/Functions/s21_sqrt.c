@@ -7,7 +7,7 @@
  * @retval long double
  */
 long double s21_sqrt(double x) {
-  if (x != x || x == S21_INF_NEG || x < 0) return S21_NAN;
+  if (S21_IS_NAN(x) || x == S21_INF_NEG || x < 0) return S21_NAN;
   if (x == S21_INF_POS || x == 0) return (long double)x;
   long double mantissa = 0, num = -1;
   while (s21_pow((num + 2), 2) <= x) num++;

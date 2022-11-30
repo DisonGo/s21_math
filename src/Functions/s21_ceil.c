@@ -7,7 +7,7 @@
  * @retval long double
  */
 long double s21_ceil(double x) {
-  if (x != x || x == S21_INF_POS || x == S21_INF_NEG) return x;
+  if (S21_IS_NAN(x) || S21_IS_INF(x)) return x;
   int int_part = (int)x;
   int_part += (x > 0 && (x - int_part));
   long double res = int_part;
