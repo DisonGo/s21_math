@@ -12,7 +12,7 @@
 #define S21_LN2 0.693147180559945309417232
 #define S21_E 2.71828182845904523536028747
 
-#define S21_IS_NAN(x) (x == S21_NAN)
+#define S21_IS_NAN(x) (x != -x)
 #define S21_IS_INF(x) (x == S21_INF_NEG || x == S21_INF_POS)
 
 int s21_abs(int x);
