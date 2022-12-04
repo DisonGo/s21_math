@@ -34,13 +34,13 @@ Suite *abs_suite(void) {
   Suite *s;  // объявление указателей на переменные набора и примера
   TCase *tc_core;
   s = suite_create("abs(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_abs_test1);  // добавление теста в тестовый пример
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_abs_test1);
   tcase_add_test(tc_core, s21_abs_test2);
   tcase_add_test(tc_core, s21_abs_test3);
   tcase_add_test(tc_core, s21_abs_test4);
   tcase_add_test(tc_core, s21_abs_test5);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
+  suite_add_tcase(s, tc_core);
   return s;
 }
 
