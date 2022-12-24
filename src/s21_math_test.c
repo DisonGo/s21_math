@@ -1124,9 +1124,9 @@ int main() {
   case_test(floor_suite(), &no_failed);
   case_test(fabs_suite(), &no_failed);
   case_test(sqrt_suite(), &no_failed);
-  //   case_test(atan_suite(), &no_failed);
+    case_test(atan_suite(), &no_failed);
   //   case_test(asin_suite(), &no_failed);
-  //   case_test(acos_suite(), &no_failed);
+    case_test(acos_suite(), &no_failed);
   //   case_test(sin_suite(), &no_failed);
   //   case_test(cos_suite(), &no_failed);
   //   case_test(tan_suite(), &no_failed);
