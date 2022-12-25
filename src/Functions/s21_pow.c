@@ -13,12 +13,8 @@ long double s21_pow(double base, double exp) {
   if (base == S21_INF_NEG && exp == S21_INF_POS) return S21_INF_POS;
   if (base < 0 && exp != (long long int)exp) return S21_NAN;
   long double res = 0;
-  if (base >= 0) {
-    res = s21_exp(exp * s21_log(base));
-  } else {
-    base = -base;
-    res = s21_exp(exp * s21_log(base));
-    if (s21_fmod(exp, 2)) res = -res;
-  }
+  int sign = base < 0 ? -1 : 1;
+  res = s21_exp(exp * s21_log(base * sign));
+  if (s21_fmod(exp, 2)) res *= sign;
   return res;
 }
