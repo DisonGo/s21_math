@@ -1,5 +1,11 @@
 #include "s21_math.h"
-// TODO Implement s21_acos
+/**
+ * @brief Get arccosine value.
+ *
+ * @param x Input value.
+ * @return Arccosine value.
+ * @retval long double
+ */
 long double s21_acos(double x) { 
   long double res = S21_NAN;
   if (x < 1 && x >= 0) res = s21_atan(s21_sqrt(1 - x * x) / x);

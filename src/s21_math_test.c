@@ -1,18 +1,23 @@
-// #include "s21_math.h"
-
-// #include <stdio.h>
-
-// int main() { return 1; }
 #include "s21_math.h"
-
 #include <check.h>
 #include <math.h>
+#include <time.h>
 #include <stdlib.h>
 
-START_TEST(s21_abs_test1) { ck_assert_int_eq(s21_abs(5), abs(5)); }
+/* 
+
+ABS TEST 
+
+*/
+
+START_TEST(s21_abs_test1) { 
+  ck_assert_int_eq(s21_abs(5), abs(5)); 
+}
 END_TEST
 
-START_TEST(s21_abs_test2) { ck_assert_int_eq(s21_abs(-5), abs(-5)); }
+START_TEST(s21_abs_test2) { 
+  ck_assert_int_eq(s21_abs(-5), abs(-5)); 
+}
 END_TEST
 
 START_TEST(s21_abs_test3) {
@@ -30,78 +35,48 @@ START_TEST(s21_abs_test5) {
 }
 END_TEST
 
-Suite *abs_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("abs(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");
-  tcase_add_test(tc_core, s21_abs_test1);
-  tcase_add_test(tc_core, s21_abs_test2);
-  tcase_add_test(tc_core, s21_abs_test3);
-  tcase_add_test(tc_core, s21_abs_test4);
-  tcase_add_test(tc_core, s21_abs_test5);
-  suite_add_tcase(s, tc_core);
-  return s;
-}
+/* 
+
+CEIL TEST 
+
+*/
 
 START_TEST(s21_ceil_test1) {
-  ck_assert_double_eq_tol(s21_ceil(-0.8), ceil(-0.8), 0.000001);
+  ck_assert_double_eq_tol(s21_ceil(-0.1), ceil(-0.1), 0.000001);
 }
 END_TEST
 
 START_TEST(s21_ceil_test2) {
-  ck_assert_double_eq_tol(s21_ceil(0.8), ceil(0.8), 0.000001);
+  ck_assert_double_eq_tol(s21_ceil(-213.3), ceil(-213.3), 0.000001);
 }
 END_TEST
 
 START_TEST(s21_ceil_test3) {
-  ck_assert_double_eq_tol(s21_ceil(-10.23), ceil(-10.23), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_ceil_test4) {
   ck_assert_double_eq(s21_ceil(INFINITY), ceil(INFINITY));
 }
 END_TEST
 
-START_TEST(s21_ceil_test5) {
+START_TEST(s21_ceil_test4) {
   ck_assert_double_nan(s21_ceil(NAN));
   ck_assert_double_nan(ceil(NAN));
 }
 END_TEST
 
-START_TEST(s21_ceil_test6) {
+START_TEST(s21_ceil_test5) {
   ck_assert_double_eq(s21_ceil(-INFINITY), ceil(-INFINITY));
 }
 END_TEST
 
-START_TEST(s21_ceil_test7) {
-  ck_assert_double_eq_tol(s21_ceil(1200), ceil(1200), 0.000001);
+START_TEST(s21_ceil_test6) {
+  ck_assert_double_eq_tol(s21_ceil(50), ceil(50), 0.000001);
 }
 END_TEST
 
-START_TEST(s21_ceil_test8) {
-  ck_assert_double_eq_tol(s21_ceil(0), ceil(0), 0.000001);
-}
-END_TEST
+/* 
 
-Suite *ceil_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("ceil(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_ceil_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_ceil_test2);
-  tcase_add_test(tc_core, s21_ceil_test3);
-  tcase_add_test(tc_core, s21_ceil_test4);
-  tcase_add_test(tc_core, s21_ceil_test5);
-  tcase_add_test(tc_core, s21_ceil_test6);
-  tcase_add_test(tc_core, s21_ceil_test7);
-  tcase_add_test(tc_core, s21_ceil_test8);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+FLOOR TEST 
+
+*/
 
 START_TEST(s21_floor_test1) {
   ck_assert_double_eq_tol(s21_floor(-0.8), floor(-0.8), 0.000001);
@@ -139,22 +114,11 @@ START_TEST(s21_floor_test7) {
 }
 END_TEST
 
-Suite *floor_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("floor(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_floor_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_floor_test2);
-  tcase_add_test(tc_core, s21_floor_test3);
-  tcase_add_test(tc_core, s21_floor_test4);
-  tcase_add_test(tc_core, s21_floor_test5);
-  tcase_add_test(tc_core, s21_floor_test6);
-  tcase_add_test(tc_core, s21_floor_test7);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+FABS TEST 
+
+*/
 
 START_TEST(s21_fabs_test1) {
   ck_assert_double_eq_tol(s21_fabs(568.36), fabs(568.36), 0.000001);
@@ -182,140 +146,121 @@ START_TEST(s21_fabs_test5) {
 }
 END_TEST
 
-Suite *fabs_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("fabs(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_fabs_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_fabs_test2);
-  tcase_add_test(tc_core, s21_fabs_test3);
-  tcase_add_test(tc_core, s21_fabs_test4);
-  tcase_add_test(tc_core, s21_fabs_test5);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+SQRT TEST 
+
+*/
 
 START_TEST(s21_sqrt_test1) {
-  ck_assert_double_eq_tol(s21_sqrt(410), sqrt(410), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_sqrt_test2) {
-  ck_assert_double_eq_tol(s21_sqrt(0.96), sqrt(0.96), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_sqrt_test3) {
   ck_assert_double_nan(s21_sqrt(-0.01));
   ck_assert_double_nan(sqrt(-0.01));
 }
 END_TEST
 
-START_TEST(s21_sqrt_test4) {
+START_TEST(s21_sqrt_test2) {
   ck_assert_double_eq(s21_sqrt(INFINITY), sqrt(INFINITY));
 }
 END_TEST
 
-START_TEST(s21_sqrt_test5) {
+START_TEST(s21_sqrt_test3) {
   ck_assert_double_nan(s21_sqrt(NAN));
   ck_assert_double_nan(sqrt(NAN));
 }
 END_TEST
 
-START_TEST(s21_sqrt_test6) {
+START_TEST(s21_sqrt_test4) {
   ck_assert_double_nan(s21_sqrt(-INFINITY));
   ck_assert_double_nan(sqrt(-INFINITY));
 }
 END_TEST
 
-START_TEST(s21_sqrt_test7) {
-  ck_assert_double_eq_tol(s21_sqrt(0), sqrt(0), 0.000001);
+START_TEST(s21_sqrt_test5) {
+  ck_assert_double_nan(s21_sqrt(-231.41));
+  ck_assert_double_nan(sqrt(-231.41));
 }
 END_TEST
 
-Suite *sqrt_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("sqrt(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_sqrt_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_sqrt_test2);
-  tcase_add_test(tc_core, s21_sqrt_test3);
-  tcase_add_test(tc_core, s21_sqrt_test4);
-  tcase_add_test(tc_core, s21_sqrt_test5);
-  tcase_add_test(tc_core, s21_sqrt_test6);
-  tcase_add_test(tc_core, s21_sqrt_test7);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
+START_TEST(s21_sqrt_test6) {
+  long double arr[] = {
+    5898.467,
+    8427.928,
+    5698.0035,
+    1289.244,
+    7025.7,
+    12.1357,
+    4745.5,
+    2930.637,
+    8187.391,
+    1015.89,
+    3155.844,
+    3954.143,
+    2862.1,
+    2782.954,
+    5097.545,
+    2630.4,
+    1075.747,
+    1889.786,
+    1782,
+    0.0001,
+    21345678,
+    7432,
+    0.3245,
+    12345,
+    13456,
+    0.03213,
+    324.42342,
+    0,
+    50,
+    0.24
+  };
+  for (int i = 0; i < 30; i++) {
+    ck_assert_double_eq_tol(s21_sqrt(arr[i]), sqrt(arr[i]), 0.000001);
+  }
 }
+
+/* 
+
+ATAN TEST 
+
+*/
 
 START_TEST(s21_atan_test1) {
-  ck_assert_double_eq_tol(s21_atan(14.96), atan(14.96), 0.000001);
+  long double arr[] = {
+    14.96,
+    -25.1235,
+    0.23464,
+    0,
+    1,
+    -1
+  };
+  for (int i = 0; i < 6; i++)
+    ck_assert_double_eq_tol(s21_atan(arr[i]), atan(arr[i]), 0.000001);
 }
 END_TEST
+
 
 START_TEST(s21_atan_test2) {
-  ck_assert_double_eq_tol(s21_atan(-25.4446), atan(-25.4446), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_atan_test3) {
-  ck_assert_double_eq_tol(s21_atan(0.2598), atan(0.2598), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_atan_test4) {
   ck_assert_double_eq(s21_atan(INFINITY), atan(INFINITY));
 }
 END_TEST
 
-START_TEST(s21_atan_test5) {
+START_TEST(s21_atan_test3) {
   ck_assert_double_nan(s21_atan(NAN));
   ck_assert_double_nan(atan(NAN));
 }
 END_TEST
 
-START_TEST(s21_atan_test6) {
+START_TEST(s21_atan_test4) {
   ck_assert_double_eq(s21_atan(-INFINITY), atan(-INFINITY));
 }
 END_TEST
 
-START_TEST(s21_atan_test7) {
-  ck_assert_double_eq_tol(s21_atan(0), atan(0), 0.000001);
-}
-END_TEST
+/* 
 
-START_TEST(s21_atan_test8) {
-  ck_assert_double_eq_tol(s21_atan(1), atan(1), 0.000001);
-}
-END_TEST
+ASIN TEST 
 
-START_TEST(s21_atan_test9) {
-  ck_assert_double_eq_tol(s21_atan(-1), atan(-1), 0.000001);
-}
-END_TEST
-
-Suite *atan_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("atan(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_atan_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_atan_test2);
-  tcase_add_test(tc_core, s21_atan_test3);
-  tcase_add_test(tc_core, s21_atan_test4);
-  tcase_add_test(tc_core, s21_atan_test5);
-  tcase_add_test(tc_core, s21_atan_test6);
-  tcase_add_test(tc_core, s21_atan_test7);
-  tcase_add_test(tc_core, s21_atan_test8);
-  tcase_add_test(tc_core, s21_atan_test9);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+*/
 
 START_TEST(s21_asin_test1) {
   ck_assert_double_eq_tol(s21_asin(0.156), asin(0.156), 0.000001);
@@ -367,24 +312,11 @@ START_TEST(s21_asin_test9) {
 }
 END_TEST
 
-Suite *asin_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("asin(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_asin_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_asin_test2);
-  tcase_add_test(tc_core, s21_asin_test3);
-  tcase_add_test(tc_core, s21_asin_test4);
-  tcase_add_test(tc_core, s21_asin_test5);
-  tcase_add_test(tc_core, s21_asin_test6);
-  tcase_add_test(tc_core, s21_asin_test7);
-  tcase_add_test(tc_core, s21_asin_test8);
-  tcase_add_test(tc_core, s21_asin_test9);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+ACOS TEST 
+
+*/
 
 START_TEST(s21_acos_test1) {
   ck_assert_double_eq_tol(s21_acos(0), acos(0), 0.000001);
@@ -436,24 +368,11 @@ START_TEST(s21_acos_test9) {
 }
 END_TEST
 
-Suite *acos_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("acos(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_acos_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_acos_test2);
-  tcase_add_test(tc_core, s21_acos_test3);
-  tcase_add_test(tc_core, s21_acos_test4);
-  tcase_add_test(tc_core, s21_acos_test5);
-  tcase_add_test(tc_core, s21_acos_test6);
-  tcase_add_test(tc_core, s21_acos_test7);
-  tcase_add_test(tc_core, s21_acos_test8);
-  tcase_add_test(tc_core, s21_acos_test9);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+SIN TEST 
+
+*/
 
 START_TEST(s21_sin_test1) {
   ck_assert_double_eq_tol(s21_sin(1000000), sin(1000000), 0.000001);
@@ -503,23 +422,11 @@ START_TEST(s21_sin_test9) {
 }
 END_TEST
 
-Suite *sin_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("sin(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_sin_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_sin_test2);
-  tcase_add_test(tc_core, s21_sin_test3);
-  tcase_add_test(tc_core, s21_sin_test4);
-  tcase_add_test(tc_core, s21_sin_test5);
-  tcase_add_test(tc_core, s21_sin_test6);
-  tcase_add_test(tc_core, s21_sin_test7);
-  tcase_add_test(tc_core, s21_sin_test8);
-  tcase_add_test(tc_core, s21_sin_test9);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+COS TEST 
+
+*/
 
 START_TEST(s21_cos_test1) {
   ck_assert_double_eq_tol(s21_cos(1200000), cos(1200000), 0.000001);
@@ -569,23 +476,11 @@ START_TEST(s21_cos_test9) {
 }
 END_TEST
 
-Suite *cos_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("cos(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_cos_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_cos_test2);
-  tcase_add_test(tc_core, s21_cos_test3);
-  tcase_add_test(tc_core, s21_cos_test4);
-  tcase_add_test(tc_core, s21_cos_test5);
-  tcase_add_test(tc_core, s21_cos_test6);
-  tcase_add_test(tc_core, s21_cos_test7);
-  tcase_add_test(tc_core, s21_cos_test8);
-  tcase_add_test(tc_core, s21_cos_test9);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+TAN TEST 
+
+*/
 
 START_TEST(s21_tan_test1) {
   ck_assert_double_eq_tol(s21_tan(6987000), tan(6987000), 0.000001);
@@ -625,21 +520,11 @@ START_TEST(s21_tan_test7) {
 }
 END_TEST
 
-Suite *tan_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("tan(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_tan_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_tan_test2);
-  tcase_add_test(tc_core, s21_tan_test3);
-  tcase_add_test(tc_core, s21_tan_test4);
-  tcase_add_test(tc_core, s21_tan_test5);
-  tcase_add_test(tc_core, s21_tan_test6);
-  tcase_add_test(tc_core, s21_tan_test7);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+EXP TEST 
+
+*/
 
 START_TEST(s21_exp_test1) {
   ck_assert_double_eq(s21_exp(25048.369), exp(25048.369));
@@ -682,22 +567,11 @@ START_TEST(s21_exp_test8) {
 }
 END_TEST
 
-Suite *exp_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("exp(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_exp_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_exp_test2);
-  tcase_add_test(tc_core, s21_exp_test3);
-  tcase_add_test(tc_core, s21_exp_test4);
-  tcase_add_test(tc_core, s21_exp_test5);
-  tcase_add_test(tc_core, s21_exp_test6);
-  tcase_add_test(tc_core, s21_exp_test7);
-  tcase_add_test(tc_core, s21_exp_test8);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+LOG TEST 
+
+*/
 
 START_TEST(s21_log_test1) {
   ck_assert_double_eq_tol(s21_log(26941.289), log(26941.289), 0.000001);
@@ -727,224 +601,222 @@ START_TEST(s21_log_test5) {
 }
 END_TEST
 
-START_TEST(s21_log_test6) { ck_assert_double_eq(s21_log(0), log(0)); }
-END_TEST
-
-START_TEST(s21_log_test7) { ck_assert_double_eq(s21_log(1), log(1)); }
-END_TEST
-
-Suite *log_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("log(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_log_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_log_test2);
-  tcase_add_test(tc_core, s21_log_test3);
-  tcase_add_test(tc_core, s21_log_test4);
-  tcase_add_test(tc_core, s21_log_test5);
-  tcase_add_test(tc_core, s21_log_test6);
-  tcase_add_test(tc_core, s21_log_test7);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
+START_TEST(s21_log_test6) { 
+  ck_assert_double_eq(s21_log(0), log(0)); 
 }
+END_TEST
+
+START_TEST(s21_log_test7) { 
+  ck_assert_double_eq(s21_log(1), log(1)); 
+}
+END_TEST
+
+/* 
+
+FMOD TEST 
+
+*/
+
 
 START_TEST(s21_fmod_test1) {
-  ck_assert_double_eq_tol(s21_fmod(20, 6984), fmod(20, 6984), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_fmod_test2) {
-  ck_assert_double_eq_tol(s21_fmod(-20, 2.365), fmod(-20, 2.365), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_fmod_test3) {
-  ck_assert_double_nan(s21_fmod(INFINITY, INFINITY));
-  ck_assert_double_nan(fmod(INFINITY, INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test4) {
-  ck_assert_double_nan(s21_fmod(-INFINITY, -INFINITY));
-  ck_assert_double_nan(fmod(-INFINITY, -INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test5) {
   ck_assert_double_nan(s21_fmod(NAN, NAN));
   ck_assert_double_nan(fmod(NAN, NAN));
 }
 END_TEST
 
-START_TEST(s21_fmod_test6) {
-  ck_assert_double_nan(s21_fmod(INFINITY, NAN));
-  ck_assert_double_nan(fmod(INFINITY, NAN));
+START_TEST(s21_fmod_test2) {
+  ck_assert_double_nan(s21_fmod(-INFINITY, -INFINITY));
+  ck_assert_double_nan(fmod(-INFINITY, -INFINITY));
 }
 END_TEST
 
-START_TEST(s21_fmod_test7) {
-  ck_assert_double_nan(s21_fmod(NAN, INFINITY));
-  ck_assert_double_nan(fmod(NAN, INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test8) {
-  ck_assert_double_nan(s21_fmod(-INFINITY, NAN));
-  ck_assert_double_nan(fmod(-INFINITY, NAN));
-}
-END_TEST
-
-START_TEST(s21_fmod_test9) {
-  ck_assert_double_nan(s21_fmod(NAN, -INFINITY));
-  ck_assert_double_nan(fmod(NAN, -INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test10) {
+START_TEST(s21_fmod_test3) {
   ck_assert_double_nan(s21_fmod(-INFINITY, INFINITY));
   ck_assert_double_nan(fmod(-INFINITY, INFINITY));
 }
 END_TEST
 
-START_TEST(s21_fmod_test11) {
+START_TEST(s21_fmod_test4) {
+  ck_assert_double_nan(s21_fmod(INFINITY, INFINITY));
+  ck_assert_double_nan(fmod(INFINITY, INFINITY));
+}
+END_TEST
+
+START_TEST(s21_fmod_test5) {
+  ck_assert_double_nan(s21_fmod(NAN, INFINITY));
+  ck_assert_double_nan(fmod(NAN, INFINITY));
+}
+END_TEST
+
+START_TEST(s21_fmod_test6) {
+  ck_assert_double_nan(s21_fmod(-INFINITY, NAN));
+  ck_assert_double_nan(fmod(-INFINITY, NAN));
+}
+END_TEST
+
+START_TEST(s21_fmod_test7) {
+  ck_assert_double_nan(s21_fmod(NAN, -INFINITY));
+  ck_assert_double_nan(fmod(NAN, -INFINITY));
+}
+END_TEST
+
+START_TEST(s21_fmod_test8) {
+  ck_assert_double_nan(s21_fmod(INFINITY, NAN));
+  ck_assert_double_nan(fmod(INFINITY, NAN));
+}
+END_TEST
+
+START_TEST(s21_fmod_test9) {
   ck_assert_double_nan(s21_fmod(INFINITY, -INFINITY));
   ck_assert_double_nan(fmod(INFINITY, -INFINITY));
 }
 END_TEST
 
+START_TEST(s21_fmod_test10) {
+  ck_assert_double_nan(s21_fmod(INFINITY, 3));
+  ck_assert_double_nan(fmod(INFINITY, 3));
+}
+END_TEST
+
+START_TEST(s21_fmod_test11) {
+  ck_assert_double_nan(s21_fmod(-INFINITY, 2));
+  ck_assert_double_nan(fmod(-INFINITY, 2));
+}
+END_TEST
+
 START_TEST(s21_fmod_test12) {
-  ck_assert_double_nan(s21_fmod(12.69, 0));
-  ck_assert_double_nan(fmod(12.69, 0));
+  ck_assert_double_nan(s21_fmod(NAN, 1));
+  ck_assert_double_nan(fmod(NAN, 1));
 }
 END_TEST
 
 START_TEST(s21_fmod_test13) {
-  ck_assert_double_eq_tol(s21_fmod(-20, 1), fmod(-20, 1), 0.000001);
+  ck_assert_double_eq(s21_fmod(100, INFINITY), fmod(100, INFINITY));
 }
 END_TEST
 
 START_TEST(s21_fmod_test14) {
-  ck_assert_double_eq_tol(s21_fmod(0, 1.63), fmod(0, 1.63), 0.000001);
+  ck_assert_double_eq(s21_fmod(100, -INFINITY), fmod(100, -INFINITY));
 }
 END_TEST
 
 START_TEST(s21_fmod_test15) {
-  ck_assert_double_eq_tol(s21_fmod(-20, 6), fmod(-20, 6), 0.000001);
-}
-END_TEST
-
-START_TEST(s21_fmod_test16) {
-  ck_assert_double_nan(s21_fmod(INFINITY, 5));
-  ck_assert_double_nan(fmod(INFINITY, 5));
-}
-END_TEST
-
-START_TEST(s21_fmod_test17) {
-  ck_assert_double_nan(s21_fmod(-INFINITY, 5));
-  ck_assert_double_nan(fmod(-INFINITY, 5));
-}
-END_TEST
-
-START_TEST(s21_fmod_test18) {
-  ck_assert_double_nan(s21_fmod(NAN, 5));
-  ck_assert_double_nan(fmod(NAN, 5));
-}
-END_TEST
-
-START_TEST(s21_fmod_test19) {
-  ck_assert_double_eq(s21_fmod(5, INFINITY), fmod(5, INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test20) {
-  ck_assert_double_eq(s21_fmod(5, -INFINITY), fmod(5, -INFINITY));
-}
-END_TEST
-
-START_TEST(s21_fmod_test21) {
-  ck_assert_double_nan(s21_fmod(5, NAN));
-  ck_assert_double_nan(fmod(5, NAN));
-}
-END_TEST
-
-START_TEST(s21_fmod_test22) {
   ck_assert_double_eq(s21_fmod(0, INFINITY), fmod(0, INFINITY));
 }
 END_TEST
 
-START_TEST(s21_fmod_test23) {
+START_TEST(s21_fmod_test16) {
   ck_assert_double_eq(s21_fmod(0, -INFINITY), fmod(0, -INFINITY));
 }
 END_TEST
 
-START_TEST(s21_fmod_test24) {
+START_TEST(s21_fmod_test17) {
   ck_assert_double_nan(s21_fmod(0, NAN));
   ck_assert_double_nan(fmod(0, NAN));
 }
 END_TEST
 
-START_TEST(s21_fmod_test25) {
+START_TEST(s21_fmod_test18) {
   ck_assert_double_nan(s21_fmod(INFINITY, 0));
   ck_assert_double_nan(fmod(INFINITY, 0));
 }
 END_TEST
 
-START_TEST(s21_fmod_test26) {
+START_TEST(s21_fmod_test19) {
   ck_assert_double_nan(s21_fmod(-INFINITY, 0));
   ck_assert_double_nan(fmod(-INFINITY, 0));
 }
 END_TEST
 
-START_TEST(s21_fmod_test27) {
+START_TEST(s21_fmod_test20) {
   ck_assert_double_nan(s21_fmod(NAN, 0));
   ck_assert_double_nan(fmod(NAN, 0));
 }
 END_TEST
 
-START_TEST(s21_fmod_test28) {
-  ck_assert_double_nan(s21_fmod(0, 0));
-  ck_assert_double_nan(fmod(0, 0));
+START_TEST(s21_fmod_MAIN_test) {
+  long double f_value[] = {
+    4234,
+    20,
+    234,
+    -756,
+    435,
+    24.342,
+    345,
+    645,
+    2.24234,
+    53.534,
+    6456,
+    1,
+    0,
+    -1,
+    34,
+    64,
+    9786,
+    534.53,
+    756.56,
+    754
+  };
+  long double s_value[] = {
+    8898.07,
+    6881.63,
+    1537.52,
+    5783.31,
+    2675.7,
+    5560.06,
+    1240.69,
+    9348.66,
+    103.02,
+    4153.9,
+    250,
+    29.3,
+    96.456,
+    86,
+    29.5,
+    302.0234,
+    1,
+    1947.38,
+    953,
+    42
+  };
+  for (int i = 0; i < 20; i++) {
+    ck_assert_double_eq_tol(s21_fmod(f_value[i], s_value[i]), fmod(f_value[i], s_value[i]), 0.000001);
+  }
+}
+
+/*
+
+FUCTORIAL TEST
+
+*/
+
+START_TEST(s21_fuctorial_test) {
+  long double fuct_arr[] = {
+    7,
+    1,
+    0,
+    11,
+    5
+  };
+  long double fuct_ans_arr[] = {
+    5040,
+    1,
+    1,
+    39916800,
+    120
+  };
+
+  for (int i = 0; i < 5; i++)
+    ck_assert_double_eq(s21_fuctorial(fuct_arr[i]), fuct_ans_arr[i]);
+
 }
 END_TEST
 
-Suite *fmod_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
-  TCase *tc_core;
-  s = suite_create("fmod(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core,
-                 s21_fmod_test1);  // добавление теста в тестовый пример
-  tcase_add_test(tc_core, s21_fmod_test2);
-  tcase_add_test(tc_core, s21_fmod_test3);
-  tcase_add_test(tc_core, s21_fmod_test4);
-  tcase_add_test(tc_core, s21_fmod_test5);
-  tcase_add_test(tc_core, s21_fmod_test6);
-  tcase_add_test(tc_core, s21_fmod_test7);
-  tcase_add_test(tc_core, s21_fmod_test8);
-  tcase_add_test(tc_core, s21_fmod_test9);
-  tcase_add_test(tc_core, s21_fmod_test10);
-  tcase_add_test(tc_core, s21_fmod_test11);
-  tcase_add_test(tc_core, s21_fmod_test12);
-  tcase_add_test(tc_core, s21_fmod_test13);
-  tcase_add_test(tc_core, s21_fmod_test14);
-  tcase_add_test(tc_core, s21_fmod_test15);
-  tcase_add_test(tc_core, s21_fmod_test16);
-  tcase_add_test(tc_core, s21_fmod_test17);
-  tcase_add_test(tc_core, s21_fmod_test18);
-  tcase_add_test(tc_core, s21_fmod_test19);
-  tcase_add_test(tc_core, s21_fmod_test20);
-  tcase_add_test(tc_core, s21_fmod_test21);
-  tcase_add_test(tc_core, s21_fmod_test22);
-  tcase_add_test(tc_core, s21_fmod_test23);
-  tcase_add_test(tc_core, s21_fmod_test24);
-  tcase_add_test(tc_core, s21_fmod_test25);
-  tcase_add_test(tc_core, s21_fmod_test26);
-  tcase_add_test(tc_core, s21_fmod_test27);
-  tcase_add_test(tc_core, s21_fmod_test28);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
-  return s;
-}
+/* 
+
+POW TEST 
+
+*/
 
 START_TEST(s21_pow_test1) {
   ck_assert_double_eq_tol(s21_pow(20, 0.4), pow(20, 0.4), 0.000001);
@@ -1076,12 +948,270 @@ START_TEST(s21_pow_test25) {
 }
 END_TEST
 
-Suite *pow_suite(void) {
-  Suite *s;  // объявление указателей на переменные набора и примера
+
+
+Suite *abs_suite(void) {
+  Suite *s;
   TCase *tc_core;
-  s = suite_create("pow(x)");  // создание нового набора abs(x)
-  tc_core = tcase_create("core");  // создание нового тестового примера core
-  tcase_add_test(tc_core, s21_pow_test1);  // добавление теста в тестовый пример
+  s = suite_create("abs(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_abs_test1);
+  tcase_add_test(tc_core, s21_abs_test2);
+  tcase_add_test(tc_core, s21_abs_test3);
+  tcase_add_test(tc_core, s21_abs_test4);
+  tcase_add_test(tc_core, s21_abs_test5);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *ceil_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("ceil(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_ceil_test1);
+  tcase_add_test(tc_core, s21_ceil_test2);
+  tcase_add_test(tc_core, s21_ceil_test3);
+  tcase_add_test(tc_core, s21_ceil_test4);
+  tcase_add_test(tc_core, s21_ceil_test5);
+  tcase_add_test(tc_core, s21_ceil_test6);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *floor_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("floor(x)"); 
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_floor_test1);
+  tcase_add_test(tc_core, s21_floor_test2);
+  tcase_add_test(tc_core, s21_floor_test3);
+  tcase_add_test(tc_core, s21_floor_test4);
+  tcase_add_test(tc_core, s21_floor_test5);
+  tcase_add_test(tc_core, s21_floor_test6);
+  tcase_add_test(tc_core, s21_floor_test7);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *fabs_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("fabs(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_fabs_test1);
+  tcase_add_test(tc_core, s21_fabs_test2);
+  tcase_add_test(tc_core, s21_fabs_test3);
+  tcase_add_test(tc_core, s21_fabs_test4);
+  tcase_add_test(tc_core, s21_fabs_test5);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *sqrt_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("sqrt(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_sqrt_test1);
+  tcase_add_test(tc_core, s21_sqrt_test2);
+  tcase_add_test(tc_core, s21_sqrt_test3);
+  tcase_add_test(tc_core, s21_sqrt_test4);
+  tcase_add_test(tc_core, s21_sqrt_test5);
+  tcase_add_test(tc_core, s21_sqrt_test6);
+
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *atan_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("atan(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_atan_test1);
+  tcase_add_test(tc_core, s21_atan_test2);
+  tcase_add_test(tc_core, s21_atan_test3);
+  tcase_add_test(tc_core, s21_atan_test4);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *asin_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("asin(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_asin_test1);
+  tcase_add_test(tc_core, s21_asin_test2);
+  tcase_add_test(tc_core, s21_asin_test3);
+  tcase_add_test(tc_core, s21_asin_test4);
+  tcase_add_test(tc_core, s21_asin_test5);
+  tcase_add_test(tc_core, s21_asin_test6);
+  tcase_add_test(tc_core, s21_asin_test7);
+  tcase_add_test(tc_core, s21_asin_test8);
+  tcase_add_test(tc_core, s21_asin_test9);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *acos_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("acos(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_acos_test1);
+  tcase_add_test(tc_core, s21_acos_test2);
+  tcase_add_test(tc_core, s21_acos_test3);
+  tcase_add_test(tc_core, s21_acos_test4);
+  tcase_add_test(tc_core, s21_acos_test5);
+  tcase_add_test(tc_core, s21_acos_test6);
+  tcase_add_test(tc_core, s21_acos_test7);
+  tcase_add_test(tc_core, s21_acos_test8);
+  tcase_add_test(tc_core, s21_acos_test9);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *sin_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("sin(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_sin_test1);
+  tcase_add_test(tc_core, s21_sin_test2);
+  tcase_add_test(tc_core, s21_sin_test3);
+  tcase_add_test(tc_core, s21_sin_test4);
+  tcase_add_test(tc_core, s21_sin_test5);
+  tcase_add_test(tc_core, s21_sin_test6);
+  tcase_add_test(tc_core, s21_sin_test7);
+  tcase_add_test(tc_core, s21_sin_test8);
+  tcase_add_test(tc_core, s21_sin_test9);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *fuct_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("fuctorial(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_fuctorial_test);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *cos_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("cos(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_cos_test1);
+  tcase_add_test(tc_core, s21_cos_test2);
+  tcase_add_test(tc_core, s21_cos_test3);
+  tcase_add_test(tc_core, s21_cos_test4);
+  tcase_add_test(tc_core, s21_cos_test5);
+  tcase_add_test(tc_core, s21_cos_test6);
+  tcase_add_test(tc_core, s21_cos_test7);
+  tcase_add_test(tc_core, s21_cos_test8);
+  tcase_add_test(tc_core, s21_cos_test9);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *tan_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("tan(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_tan_test1);
+  tcase_add_test(tc_core, s21_tan_test2);
+  tcase_add_test(tc_core, s21_tan_test3);
+  tcase_add_test(tc_core, s21_tan_test4);
+  tcase_add_test(tc_core, s21_tan_test5);
+  tcase_add_test(tc_core, s21_tan_test6);
+  tcase_add_test(tc_core, s21_tan_test7);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *exp_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("exp(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_exp_test1);
+  tcase_add_test(tc_core, s21_exp_test2);
+  tcase_add_test(tc_core, s21_exp_test3);
+  tcase_add_test(tc_core, s21_exp_test4);
+  tcase_add_test(tc_core, s21_exp_test5);
+  tcase_add_test(tc_core, s21_exp_test6);
+  tcase_add_test(tc_core, s21_exp_test7);
+  tcase_add_test(tc_core, s21_exp_test8);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+Suite *log_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("log(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_log_test1);
+  tcase_add_test(tc_core, s21_log_test2);
+  tcase_add_test(tc_core, s21_log_test3);
+  tcase_add_test(tc_core, s21_log_test4);
+  tcase_add_test(tc_core, s21_log_test5);
+  tcase_add_test(tc_core, s21_log_test6);
+  tcase_add_test(tc_core, s21_log_test7);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *fmod_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("fmod(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_fmod_MAIN_test);
+  tcase_add_test(tc_core, s21_fmod_test1);
+  tcase_add_test(tc_core, s21_fmod_test2);
+  tcase_add_test(tc_core, s21_fmod_test3);
+  tcase_add_test(tc_core, s21_fmod_test4);
+  tcase_add_test(tc_core, s21_fmod_test5);
+  tcase_add_test(tc_core, s21_fmod_test6);
+  tcase_add_test(tc_core, s21_fmod_test7);
+  tcase_add_test(tc_core, s21_fmod_test8);
+  tcase_add_test(tc_core, s21_fmod_test9);
+  tcase_add_test(tc_core, s21_fmod_test10);
+  tcase_add_test(tc_core, s21_fmod_test11);
+  tcase_add_test(tc_core, s21_fmod_test12);
+  tcase_add_test(tc_core, s21_fmod_test13);
+  tcase_add_test(tc_core, s21_fmod_test14);
+  tcase_add_test(tc_core, s21_fmod_test15);
+  tcase_add_test(tc_core, s21_fmod_test16);
+  tcase_add_test(tc_core, s21_fmod_test17);
+  tcase_add_test(tc_core, s21_fmod_test18);
+  tcase_add_test(tc_core, s21_fmod_test19);
+  tcase_add_test(tc_core, s21_fmod_test20);
+  suite_add_tcase(s, tc_core);
+  return s;
+}
+
+
+Suite *pow_suite(void) {
+  Suite *s;
+  TCase *tc_core;
+  s = suite_create("pow(x)");
+  tc_core = tcase_create("core");
+  tcase_add_test(tc_core, s21_pow_test1);
   tcase_add_test(tc_core, s21_pow_test2);
   tcase_add_test(tc_core, s21_pow_test3);
   tcase_add_test(tc_core, s21_pow_test4);
@@ -1106,7 +1236,7 @@ Suite *pow_suite(void) {
   tcase_add_test(tc_core, s21_pow_test23);
   tcase_add_test(tc_core, s21_pow_test24);
   tcase_add_test(tc_core, s21_pow_test25);
-  suite_add_tcase(s, tc_core);  // добавление тестового примера в набор
+  suite_add_tcase(s, tc_core);
   return s;
 }
 
@@ -1118,21 +1248,22 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int no_failed = 0;
-  case_test(abs_suite(), &no_failed);
-  case_test(ceil_suite(), &no_failed);
-  case_test(floor_suite(), &no_failed);
-  case_test(fabs_suite(), &no_failed);
-  case_test(sqrt_suite(), &no_failed);
-    case_test(atan_suite(), &no_failed);
-  //   case_test(asin_suite(), &no_failed);
-    case_test(acos_suite(), &no_failed);
-  //   case_test(sin_suite(), &no_failed);
-  //   case_test(cos_suite(), &no_failed);
-  //   case_test(tan_suite(), &no_failed);
-  case_test(exp_suite(), &no_failed);
-  case_test(log_suite(), &no_failed);
-  case_test(fmod_suite(), &no_failed);
-  case_test(pow_suite(), &no_failed);
-  return (no_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+  int fail = 0;
+  case_test(abs_suite(), &fail);
+  case_test(acos_suite(), &fail);
+  case_test(asin_suite(), &fail);
+  case_test(atan_suite(), &fail);
+  case_test(ceil_suite(), &fail);
+  case_test(cos_suite(), &fail);
+  case_test(exp_suite(), &fail);
+  case_test(fabs_suite(), &fail);
+  case_test(floor_suite(), &fail);
+  case_test(fmod_suite(), &fail);
+  case_test(fuct_suite(), &fail);
+  case_test(log_suite(), &fail);
+  case_test(pow_suite(), &fail);
+  case_test(sin_suite(), &fail);
+  case_test(sqrt_suite(), &fail);
+  case_test(tan_suite(), &fail);
+  return fail;
 }

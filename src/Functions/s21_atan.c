@@ -1,5 +1,11 @@
 #include "s21_math.h"
-// TODO Implement s21_atan
+/**
+ * @brief Get arctangens value.
+ *
+ * @param x Input value.
+ * @return Arctangens value.
+ * @retval long double
+ */
 long double s21_atan(double x) {
   long double res = 0;
   if (x == S21_INF_POS) return S21_PI / 2;
