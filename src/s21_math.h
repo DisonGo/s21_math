@@ -1,12 +1,10 @@
 #ifndef S21_MATH_H_
 #define S21_MATH_H_
-// TODO Write documentation
-// TODO Add Unit_tests
 #include <limits.h>
 #include <stdio.h>
 
 #define S21_PI 3.14159265358979323846
-#define S21_NAN 0.0 / 0.0  //  __builtin_nanf("0x7fc00000")
+#define S21_NAN 0.0 / 0.0
 #define S21_INF_POS +1.0 / 0.0
 #define S21_INF_NEG -1.0 / 0.0
 #define S21_LN2 0.693147180559945309417232
