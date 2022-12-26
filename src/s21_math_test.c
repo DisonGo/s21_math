@@ -1,23 +1,20 @@
 #include "s21_math.h"
+
 #include <check.h>
 #include <math.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
-/* 
+/*
 
-ABS TEST 
+ABS TEST
 
 */
 
-START_TEST(s21_abs_test1) { 
-  ck_assert_int_eq(s21_abs(5), abs(5)); 
-}
+START_TEST(s21_abs_test1) { ck_assert_int_eq(s21_abs(5), abs(5)); }
 END_TEST
 
-START_TEST(s21_abs_test2) { 
-  ck_assert_int_eq(s21_abs(-5), abs(-5)); 
-}
+START_TEST(s21_abs_test2) { ck_assert_int_eq(s21_abs(-5), abs(-5)); }
 END_TEST
 
 START_TEST(s21_abs_test3) {
@@ -35,9 +32,9 @@ START_TEST(s21_abs_test5) {
 }
 END_TEST
 
-/* 
+/*
 
-CEIL TEST 
+CEIL TEST
 
 */
 
@@ -72,9 +69,9 @@ START_TEST(s21_ceil_test6) {
 }
 END_TEST
 
-/* 
+/*
 
-FLOOR TEST 
+FLOOR TEST
 
 */
 
@@ -114,9 +111,9 @@ START_TEST(s21_floor_test7) {
 }
 END_TEST
 
-/* 
+/*
 
-FABS TEST 
+FABS TEST
 
 */
 
@@ -146,9 +143,9 @@ START_TEST(s21_fabs_test5) {
 }
 END_TEST
 
-/* 
+/*
 
-SQRT TEST 
+SQRT TEST
 
 */
 
@@ -182,63 +179,29 @@ START_TEST(s21_sqrt_test5) {
 END_TEST
 
 START_TEST(s21_sqrt_test6) {
-  long double arr[] = {
-    5898.467,
-    8427.928,
-    5698.0035,
-    1289.244,
-    7025.7,
-    12.1357,
-    4745.5,
-    2930.637,
-    8187.391,
-    1015.89,
-    3155.844,
-    3954.143,
-    2862.1,
-    2782.954,
-    5097.545,
-    2630.4,
-    1075.747,
-    1889.786,
-    1782,
-    0.0001,
-    21345678,
-    7432,
-    0.3245,
-    12345,
-    13456,
-    0.03213,
-    324.42342,
-    0,
-    50,
-    0.24
-  };
+  long double arr[] = {5898.467, 8427.928,  5698.0035, 1289.244, 7025.7,
+                       12.1357,  4745.5,    2930.637,  8187.391, 1015.89,
+                       3155.844, 3954.143,  2862.1,    2782.954, 5097.545,
+                       2630.4,   1075.747,  1889.786,  1782,     0.0001,
+                       21345678, 7432,      0.3245,    12345,    13456,
+                       0.03213,  324.42342, 0,         50,       0.24};
   for (int i = 0; i < 30; i++) {
     ck_assert_double_eq_tol(s21_sqrt(arr[i]), sqrt(arr[i]), 0.000001);
   }
 }
 
-/* 
+/*
 
-ATAN TEST 
+ATAN TEST
 
 */
 
 START_TEST(s21_atan_test1) {
-  long double arr[] = {
-    14.96,
-    -25.1235,
-    0.23464,
-    0,
-    1,
-    -1
-  };
+  long double arr[] = {14.96, -25.1235, 0.23464, 0, 1, -1};
   for (int i = 0; i < 6; i++)
     ck_assert_double_eq_tol(s21_atan(arr[i]), atan(arr[i]), 0.000001);
 }
 END_TEST
-
 
 START_TEST(s21_atan_test2) {
   ck_assert_double_eq(s21_atan(INFINITY), atan(INFINITY));
@@ -256,9 +219,9 @@ START_TEST(s21_atan_test4) {
 }
 END_TEST
 
-/* 
+/*
 
-ASIN TEST 
+ASIN TEST
 
 */
 
@@ -312,9 +275,9 @@ START_TEST(s21_asin_test9) {
 }
 END_TEST
 
-/* 
+/*
 
-ACOS TEST 
+ACOS TEST
 
 */
 
@@ -368,9 +331,9 @@ START_TEST(s21_acos_test9) {
 }
 END_TEST
 
-/* 
+/*
 
-SIN TEST 
+SIN TEST
 
 */
 
@@ -422,9 +385,9 @@ START_TEST(s21_sin_test9) {
 }
 END_TEST
 
-/* 
+/*
 
-COS TEST 
+COS TEST
 
 */
 
@@ -476,9 +439,9 @@ START_TEST(s21_cos_test9) {
 }
 END_TEST
 
-/* 
+/*
 
-TAN TEST 
+TAN TEST
 
 */
 
@@ -520,9 +483,9 @@ START_TEST(s21_tan_test7) {
 }
 END_TEST
 
-/* 
+/*
 
-EXP TEST 
+EXP TEST
 
 */
 
@@ -567,9 +530,9 @@ START_TEST(s21_exp_test8) {
 }
 END_TEST
 
-/* 
+/*
 
-LOG TEST 
+LOG TEST
 
 */
 
@@ -601,22 +564,17 @@ START_TEST(s21_log_test5) {
 }
 END_TEST
 
-START_TEST(s21_log_test6) { 
-  ck_assert_double_eq(s21_log(0), log(0)); 
-}
+START_TEST(s21_log_test6) { ck_assert_double_eq(s21_log(0), log(0)); }
 END_TEST
 
-START_TEST(s21_log_test7) { 
-  ck_assert_double_eq(s21_log(1), log(1)); 
-}
+START_TEST(s21_log_test7) { ck_assert_double_eq(s21_log(1), log(1)); }
 END_TEST
 
-/* 
+/*
 
-FMOD TEST 
+FMOD TEST
 
 */
-
 
 START_TEST(s21_fmod_test1) {
   ck_assert_double_nan(s21_fmod(NAN, NAN));
@@ -735,52 +693,16 @@ START_TEST(s21_fmod_test20) {
 END_TEST
 
 START_TEST(s21_fmod_MAIN_test) {
-  long double f_value[] = {
-    4234,
-    20,
-    234,
-    -756,
-    435,
-    24.342,
-    345,
-    645,
-    2.24234,
-    53.534,
-    6456,
-    1,
-    0,
-    -1,
-    34,
-    64,
-    9786,
-    534.53,
-    756.56,
-    754
-  };
-  long double s_value[] = {
-    8898.07,
-    6881.63,
-    1537.52,
-    5783.31,
-    2675.7,
-    5560.06,
-    1240.69,
-    9348.66,
-    103.02,
-    4153.9,
-    250,
-    29.3,
-    96.456,
-    86,
-    29.5,
-    302.0234,
-    1,
-    1947.38,
-    953,
-    42
-  };
+  long double f_value[] = {4234, 20,      234,    -756,   435,    24.342, 345,
+                           645,  2.24234, 53.534, 6456,   1,      0,      -1,
+                           34,   64,      9786,   534.53, 756.56, 754};
+  long double s_value[] = {8898.07,  6881.63, 1537.52, 5783.31, 2675.7,
+                           5560.06,  1240.69, 9348.66, 103.02,  4153.9,
+                           250,      29.3,    96.456,  86,      29.5,
+                           302.0234, 1,       1947.38, 953,     42};
   for (int i = 0; i < 20; i++) {
-    ck_assert_double_eq_tol(s21_fmod(f_value[i], s_value[i]), fmod(f_value[i], s_value[i]), 0.000001);
+    ck_assert_double_eq_tol(s21_fmod(f_value[i], s_value[i]),
+                            fmod(f_value[i], s_value[i]), 0.000001);
   }
 }
 
@@ -791,30 +713,17 @@ FUCTORIAL TEST
 */
 
 START_TEST(s21_fuctorial_test) {
-  long double fuct_arr[] = {
-    7,
-    1,
-    0,
-    11,
-    5
-  };
-  long double fuct_ans_arr[] = {
-    5040,
-    1,
-    1,
-    39916800,
-    120
-  };
+  long double fuct_arr[] = {7, 1, 0, 11, 5};
+  long double fuct_ans_arr[] = {5040, 1, 1, 39916800, 120};
 
   for (int i = 0; i < 5; i++)
     ck_assert_double_eq(s21_fuctorial(fuct_arr[i]), fuct_ans_arr[i]);
-
 }
 END_TEST
 
-/* 
+/*
 
-POW TEST 
+POW TEST
 
 */
 
@@ -948,8 +857,6 @@ START_TEST(s21_pow_test25) {
 }
 END_TEST
 
-
-
 Suite *abs_suite(void) {
   Suite *s;
   TCase *tc_core;
@@ -979,11 +886,10 @@ Suite *ceil_suite(void) {
   return s;
 }
 
-
 Suite *floor_suite(void) {
   Suite *s;
   TCase *tc_core;
-  s = suite_create("floor(x)"); 
+  s = suite_create("floor(x)");
   tc_core = tcase_create("core");
   tcase_add_test(tc_core, s21_floor_test1);
   tcase_add_test(tc_core, s21_floor_test2);
@@ -995,7 +901,6 @@ Suite *floor_suite(void) {
   suite_add_tcase(s, tc_core);
   return s;
 }
-
 
 Suite *fabs_suite(void) {
   Suite *s;
@@ -1010,7 +915,6 @@ Suite *fabs_suite(void) {
   suite_add_tcase(s, tc_core);
   return s;
 }
-
 
 Suite *sqrt_suite(void) {
   Suite *s;
@@ -1040,7 +944,6 @@ Suite *atan_suite(void) {
   suite_add_tcase(s, tc_core);
   return s;
 }
-
 
 Suite *asin_suite(void) {
   Suite *s;
@@ -1105,7 +1008,6 @@ Suite *fuct_suite(void) {
   suite_add_tcase(s, tc_core);
   return s;
 }
-
 
 Suite *cos_suite(void) {
   Suite *s;
@@ -1174,7 +1076,6 @@ Suite *log_suite(void) {
   return s;
 }
 
-
 Suite *fmod_suite(void) {
   Suite *s;
   TCase *tc_core;
@@ -1204,7 +1105,6 @@ Suite *fmod_suite(void) {
   suite_add_tcase(s, tc_core);
   return s;
 }
-
 
 Suite *pow_suite(void) {
   Suite *s;

@@ -60,9 +60,9 @@ set_report_gcc:
 
 test: $(TEST_SRC) $(PROJECT_NAME).a
 	$(gcc) $^ -o $@ $(TEST_CHECK_F) $(ADD_LIB)
+	./test
 
 gcov_report: clean set_report_gcc test
-	./test
 	gcov *.c ${LIB_SRC_DIR}/*.c -o $(ODIR)/*
 	mv *.gcov ./gcov
 	mv ./*.gc* $(ODIR)/*/*.gc* ./gcov

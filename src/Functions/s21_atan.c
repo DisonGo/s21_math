@@ -21,7 +21,6 @@ long double s21_atan(double x) {
     double c = 1 + 2 * i;
     res += a * b / c;
   }
-  if (!is_in_range)
-    res = (S21_PI * s21_fabs(x) / (2 * x)) - res;
+  if (!is_in_range) res = (S21_PI * s21_fabs(x) / (2 * x)) - res;
   return res;
- }
+}

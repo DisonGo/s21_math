@@ -3,6 +3,11 @@ create_funcs.sh
 test
 main
 .DS_Store
+*.gc*
+*.html
+*.css
+*.png
+*.info
 # Prerequisites
 *.d
 
