@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Run",
+            "program": "${workspaceFolder}/local/main",
+            "args": [],
+            "cwd": "${workspaceFolder}/src",
+            "preLaunchTask": "Build local"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/local/main",
+            "args": [],
+            "cwd": "${workspaceFolder}/src",
+            "preLaunchTask": "Build local with debug"
+        }
+    ]
+}

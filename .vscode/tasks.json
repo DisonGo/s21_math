@@ -1,0 +1,79 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build project",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/src;",
+                "make;",
+                "cd ${workspaceFolder}/local;",
+                "make"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build local",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/local;",
+                "make"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "Build lib with debug",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/src;",
+                "make clean set_debug_gcc s21_math.a"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "Build local with debug",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/local;",
+                "make set_debug_gcc all"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "Run lib tests",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/src;",
+                "make test;",
+                "./test"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Clean project",
+            "type": "shell",
+            "command": [
+                "cd ${workspaceFolder}/src;",
+                "make clean;",
+                "cd ${workspaceFolder}/local;",
+                "make clean"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
