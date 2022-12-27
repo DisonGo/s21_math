@@ -2,8 +2,10 @@ PROJECT_NAME	=s21_math
 ODIR 			= ./obj
 INC_PATH		= ./
 LIB_SRC_DIR		= ./Functions
+BUILD_LIB		= ../build
 UNAME_S 		:= $(shell uname -s)
-TEST_SRC		= ${PROJECT_NAME}_test.c
+TEST_NAME		= ${PROJECT_NAME}_test
+TEST_SRC		= $(TEST_NAME).c
 Flags 			= -Werror -Wall -Wextra -std=c11
 gcc 			= gcc $(Flags)
 LIB_SOURCES		= $(shell find $(LIB_SRC_DIR) -name '*.c')
@@ -32,11 +34,12 @@ clear:
 	clear
 
 clean:
-	rm -rf $(PROJECT_NAME).a test *.out
+	rm -rf test *.out
 	rm -rf $(ODIR)/*.o $(ODIR)/*.gc*
 	rm -rf $(ODIR)/*/*.o $(ODIR)/*/*.gc*
 	rm -rf ./gcov/*.o ./gcov/*.gc*
 	rm -rf ./*.gc*
+	rm -rf $(BUILD_LIB)/$(PROJECT_NAME).a
 	rm -rf report*
 
 obj: $(OBJ)
@@ -47,8 +50,9 @@ clang:
 clang-replace:
 	clang-format --style=Google -i *.c *.h ${LIB_SRC_DIR}/*.c
 
-$(PROJECT_NAME).a: obj
+$(BUILD_LIB)/$(PROJECT_NAME).a: obj
 	ar rcs $@ $(ODIR)/$(LIB_SRC_DIR)/*.o
+$(PROJECT_NAME).a: $(BUILD_LIB)/$(PROJECT_NAME).a
 
 set_debug_gcc:
 	$(eval gcc += -g)
@@ -58,9 +62,9 @@ set_report_gcc:
 	$(eval gcc += -fprofile-arcs -ftest-coverage -fPIC)
 	@echo s21_math:Check build
 
-test: $(TEST_SRC) $(PROJECT_NAME).a
-	$(gcc) $^ -o $@ $(TEST_CHECK_F) $(ADD_LIB)
-	./test
+test: $(TEST_SRC) $(BUILD_LIB)/$(PROJECT_NAME).a
+	$(gcc) $^ -o $(TEST_NAME) $(TEST_CHECK_F) $(ADD_LIB)
+	./$(TEST_NAME)
 
 gcov_report: clean set_report_gcc test
 	gcov *.c ${LIB_SRC_DIR}/*.c -o $(ODIR)/*
@@ -70,4 +74,4 @@ gcov_report: clean set_report_gcc test
 	genhtml -o report report.info
 	$(OPEN_CMD) ./report/index.html
 
-.PHONY: clean obj clear $(PROJECT_NAME) test clang-replace all $(PROJECT_NAME).a set_debug_gcc set_report_gcc gcov_report
+.PHONY: clean obj clear $(PROJECT_NAME) $(BUILD_LIB)/$(PROJECT_NAME).a test clang-replace all $(PROJECT_NAME).a set_debug_gcc set_report_gcc gcov_report
