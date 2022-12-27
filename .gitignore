@@ -2,6 +2,7 @@ local
 create_funcs.sh
 test
 main
+.vscode
 .DS_Store
 *.gc*
 *.html
