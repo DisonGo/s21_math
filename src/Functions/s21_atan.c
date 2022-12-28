@@ -10,7 +10,7 @@ long double s21_atan(double x) {
   long double res = 0;
   if (x == S21_INF_POS) return S21_PI / 2;
   if (x == S21_INF_NEG) return -S21_PI / 2;
-  if (x != x) return x;
+  if (S21_IS_NAN(x)) return x;
   if (x == 1) return 0.785398163;
   if (x == -1) return -0.785398163;
   int is_in_range = (x > -1 && x < 1);
